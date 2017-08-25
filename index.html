@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Game of Throne</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var url = "https://www.anapioficeandfire.com/api/houses/";
+                $(".top-box").click(function(){
+
+                    var house = $(this).attr('id');
+                    $.get(url + house, function (data) {
+                        console.log(data);
+                        var des = '';
+                        des += `<span>Name:</span>`;
+                        des += `<span>${data.name}</span>`;
+                        des += `<br>`;
+                        des += `<span>Words:</span>`;
+                        des += `<span>${data.words}</span>`;
+                        des += `<br>`;
+                        des += `<span>Titles:</span>`;
+                        des += `<span>${data.titles}</span>`;
+                        $("#content").html(des);
+                    })
+                })
+
+            }); 
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="row">
+                <div class="top-box img1" id="362"><h1>House Stark</h1><img src="stark.jpg"></div>
+                <div class="top-box" id="16"><h1>House Baratheon</h1><img src="baratheon.png"></div>
+                <div class="top-box" id="378"><h1>House Targaryen</h1><img src="targaryen.jpg"></div>
+                <div class="top-box" id="229"><h1>House Lannister</h1><img src="lannister.jpg"></div>
+            </div>
+            <div id="content"></div>
+        </div>
+    
+    </body>
+</html>
